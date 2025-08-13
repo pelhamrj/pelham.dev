@@ -3,7 +3,7 @@ import { MapPin } from 'lucide-react';
 
 export default function Home() {
     return (
-        <div className="flex h-full items-center justify-center">
+        <div className="flex h-full flex-col items-center justify-center md:flex-row">
             <Image src="/profile.png" alt="profile" width={350} height={350} />
             <div className="flex flex-col items-center justify-center gap-2">
                 <h1 className="text-5xl font-bold">Ryan Pelham</h1>
