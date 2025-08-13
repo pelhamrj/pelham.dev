@@ -1,36 +1,63 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# pelham.dev
 
-## Getting Started
+A personal portfolio site for Ryan Pelham — Senior Software Engineer. It highlights an about page, a blog, selected work, and a downloadable resume. The site is built with Next.js and deployed to GitHub Pages.
 
-First, run the development server:
+Live site: https://pelham.dev (also available at https://www.pelham.dev)
+
+## Features
+- About: Background, interests, and current focus.
+- Blog: Writing about engineering, architecture, and craft.
+- Work: Selected projects and professional highlights.
+- Resume: One‑page PDF served from `/public/resume.pdf` and linked in the header.
+- Responsive, fast, and accessible by default.
+
+## Tech stack
+- Next.js 15 (App Router, Static Export)
+- React 19
+- TypeScript
+- Tailwind CSS v4 (via `@tailwindcss/postcss`)
+- Lucide Icons (`lucide-react`)
+- ESLint + Prettier
+
+## Local development
+Requirements:
+- Node.js 22+
+- pnpm 10+
+
+Install and run:
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
+pnpm install
 pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Build (static export) and preview:
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```bash
+pnpm build
+pnpm start
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+Notes:
+- `next.config.ts` sets `output: 'export'` and `images: { unoptimized: true }` for GitHub Pages.
+- Images use Next Image but are exported unoptimized for static hosting.
 
-## Learn More
+## Deployment
+Automated on every push to `main` via GitHub Actions:
+- Workflow: `.github/workflows/deploy.yml`
+- Steps: checkout → pnpm install → `pnpm build` → publish `./out` to GitHub Pages
+- CNAME is set to `www.pelham.dev`; the site is also reachable at `https://pelham.dev`
 
-To learn more about Next.js, take a look at the following resources:
+If you fork this project:
+- Update the CNAME in the workflow or disable it.
+- Configure your repository’s Pages settings to deploy from the `gh-pages` branch created by the workflow.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Scripts
+- `pnpm dev` — Run the dev server (Turbopack)
+- `pnpm build` — Build the static site
+- `pnpm start` — Serve the production build
+- `pnpm lint` — Lint with ESLint
+- `pnpm format` / `pnpm format:check` — Prettier formatting
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## License
+This repository contains my personal portfolio. All rights reserved. If you’d like to reference or reuse parts of it, please open an issue to discuss.
